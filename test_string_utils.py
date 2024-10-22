@@ -1,14 +1,19 @@
 import pytest # noqa: F401
-from string_utils import StringUtils
+from StringUtils import StringUtils
 
 
 string_utils = StringUtils()
 
-
-def test_capitilize():
+@pytest.mark.parametrize(
+    "input_str, expected",
+    [
+        ("skypro", "Skypro"),  # обычное слово
+        ("hello world", "Hello world"),  # строка с маленькими буквами
+    ],
+)
+def test_capitilize(input_str, expected):
     # Позитивные тесты
-    assert string_utils.capitilize("skypro") == "Skypro"
-    assert string_utils.capitilize("hello world") == "Hello world"
+    assert string_utils.capitilize(input_str) == expected
 
     # Негативные тесты
     assert string_utils.capitilize("") == ""
