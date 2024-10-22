@@ -1,6 +1,9 @@
 import pytest # noqa: F401
 from StringUtils import StringUtils
 
+@pytest.fixture
+def string_utils():
+    return StringUtils()
 
 string_utils = StringUtils()
 
